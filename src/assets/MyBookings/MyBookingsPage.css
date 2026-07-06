@@ -1,0 +1,115 @@
+/* ==========================================================================
+   MyBookingsPage.css
+   ========================================================================== */
+
+.my-bookings-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+.my-bookings-page__content {
+    width: 90%;
+    max-width: 900px;
+    margin: calc(var(--navbar-height) + var(--navbar-gap) + 40px) auto 100px;
+}
+
+.my-bookings-page__header {
+    margin-bottom: 40px;
+}
+
+.my-bookings-page__eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
+
+.my-bookings-page__heading {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--color-text);
+}
+
+.my-bookings-page__status {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.my-bookings-page__status--error {
+    color: var(--color-error);
+}
+
+.my-bookings-page__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.my-bookings-page__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 80px 32px;
+    border-radius: 24px;
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+}
+
+.my-bookings-page__empty-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text);
+}
+
+.my-bookings-page__empty-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+    max-width: 420px;
+    margin-bottom: 8px;
+}
+
+.my-bookings-page__empty-cta {
+    padding: 14px 28px;
+    border-radius: var(--pill-radius);
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: background-color 0.35s var(--ease-premium),
+        color 0.35s var(--ease-premium),
+        transform 0.25s var(--ease-premium),
+        box-shadow 0.35s var(--ease-premium);
+}
+
+.my-bookings-page__empty-cta:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+    transform: scale(1.03);
+    box-shadow: 0 12px 35px var(--color-glow);
+}
+
+@media (max-width: 640px) {
+    .my-bookings-page__heading {
+        font-size: 2.4rem;
+    }
+}

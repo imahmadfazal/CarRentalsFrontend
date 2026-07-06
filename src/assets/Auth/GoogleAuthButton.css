@@ -1,0 +1,37 @@
+/* ==========================================================================
+   GoogleAuthButton.css
+   ========================================================================== */
+
+.google-auth {
+    margin-top: 4px;
+}
+
+.google-auth__divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.google-auth__divider::before,
+.google-auth__divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.google-auth__divider span {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    opacity: 0.8;
+}
+
+.google-auth__btn-wrap {
+    display: flex;
+    justify-content: center;
+}

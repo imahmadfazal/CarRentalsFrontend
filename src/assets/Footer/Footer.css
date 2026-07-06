@@ -1,0 +1,300 @@
+/* ==========================================================================
+   footer.css
+   ========================================================================== */
+
+.footer {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: 80px 0 0;
+    overflow: hidden;
+}
+
+.footer__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+    gap: 48px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 64px;
+}
+
+/* Brand Column */
+.footer__brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer__logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.footer__brand-desc {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin: 0 0 24px 0;
+}
+
+/* Social icons layout */
+.footer__socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer__social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.footer__social-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.footer__social-link:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+    border-color: var(--color-border-active);
+}
+
+/* Link Columns */
+.footer__column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer__column-title {
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+    margin: 0 0 24px 0;
+    opacity: 0.85;
+}
+
+.footer__column-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer__link {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: color 0.2s, opacity 0.2s;
+}
+
+.footer__link:hover {
+    color: var(--color-text);
+    opacity: 1;
+}
+
+/* Newsletter block */
+.footer__newsletter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer__newsletter-desc {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin: 0 0 20px 0;
+}
+
+.footer__newsletter-form {
+    width: 100%;
+}
+
+.footer__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 6px 6px 6px 16px;
+    transition: border-color 0.3s;
+}
+
+.footer__input-wrapper:focus-within {
+    border-color: var(--color-border-active);
+}
+
+.footer__newsletter-input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    width: 100%;
+    padding-right: 12px;
+}
+
+.footer__newsletter-input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.45;
+}
+
+.footer__newsletter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: none;
+    color: var(--color-accent-text);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.footer__newsletter-btn:hover {
+    background-color: var(--color-accent);
+    opacity: 0.85;
+}
+
+.footer__newsletter-btn:disabled {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+.footer__arrow-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Spinner indicator */
+.footer__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-border);
+    border-top: 2px solid var(--color-accent-text);
+    border-radius: 50%;
+    animation: footer-spin 0.8s linear infinite;
+}
+
+@keyframes footer-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Status message */
+.footer__newsletter-msg {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    margin-top: 10px;
+    display: block;
+    line-height: 1.4;
+}
+
+.footer__newsletter-msg--success {
+    color: var(--color-success);
+}
+
+.footer__newsletter-msg--error {
+    color: var(--color-error);
+}
+
+/* Bottom Bar */
+.footer__bottom {
+    border-top: 1px solid var(--color-border);
+    padding: 32px 0;
+    background-color: var(--color-bg-secondary);
+}
+
+.footer__bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer__copy {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+    margin: 0;
+}
+
+.footer__signature {
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    opacity: 0.55;
+    text-transform: uppercase;
+}
+
+/* ---- Responsive Breakpoints ---- */
+@media (max-width: 992px) {
+    .footer__inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding-top: 60px;
+    }
+
+    .footer__inner {
+        gap: 36px;
+    }
+
+    .footer__bottom-inner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .footer__column-title {
+        margin-bottom: 16px;
+    }
+}

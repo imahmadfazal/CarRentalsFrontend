@@ -1,0 +1,27 @@
+/* ==========================================================================
+   ResultsGrid.css
+   ========================================================================== */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    width: 100%;
+}
+
+.results-grid__item {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+@media (max-width: 992px) {
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}

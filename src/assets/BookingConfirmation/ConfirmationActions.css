@@ -1,0 +1,49 @@
+/* ==========================================================================
+   ConfirmationActions.css
+   ========================================================================== */
+
+.confirmation-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+}
+
+.confirmation-actions__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    border-radius: var(--pill-radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: transform var(--duration-fast) var(--ease-premium),
+        box-shadow var(--duration-fast) var(--ease-premium),
+        background-color var(--duration-fast) var(--ease-premium);
+}
+
+.confirmation-actions__btn--primary {
+    background-color: var(--color-accent);
+    color: var(--color-accent-text);
+}
+
+.confirmation-actions__btn--primary:hover {
+    transform: scale(1.045);
+    box-shadow: 0 10px 30px var(--color-glow);
+}
+
+.confirmation-actions__btn--secondary {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    backdrop-filter: blur(8px);
+}
+
+.confirmation-actions__btn--secondary:hover {
+    transform: scale(1.045);
+    background: var(--color-surface-hover);
+}

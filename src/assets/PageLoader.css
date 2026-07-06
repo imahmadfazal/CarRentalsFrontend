@@ -1,0 +1,85 @@
+/* PageLoader.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
+
+.loader-root {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Overlay sits above everything, pinned to the viewport. */
+.loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    /* purely visual; never blocks input underneath once gone */
+}
+
+/* Each half is 50% width, full height, solid black.
+   They overlap exactly to form a solid black screen,
+   until the split animation moves them apart. */
+/* Always a near-black splash screen regardless of the active theme —
+   this is a brand intro moment, not page content, so it intentionally
+   uses the theme-independent scrim tokens rather than --color-bg. */
+.loader-half {
+    width: 50%;
+    height: 100%;
+    background-color: var(--color-scrim-strong);
+    will-change: transform;
+}
+
+.loader-half--left {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.loader-half--right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Headline shown on top of the black screen while it holds.
+   Sits above both halves (z-index + flex centering on the overlay itself)
+   so it reads as one solid word, never visually cut by the split. */
+.loader-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0 1.5rem;
+    color: var(--color-scrim-text);
+    text-align: center;
+    font-family: "Cinzel", Georgia, "Times New Roman", serif;
+    font-weight: 900;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: clamp(2.25rem, 9vw, 7rem);
+    line-height: 1.05;
+    text-shadow: 0 2px 40px var(--color-scrim-glow);
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .loader-text {
+        white-space: normal;
+        letter-spacing: 0.04em;
+    }
+}
+
+/* Content is hidden via GSAP's autoAlpha (opacity + visibility) before
+   the JS runs, but these defaults act as a safe fallback if JS is slow
+   to attach (e.g. slow connections), preventing a flash of full content. */
+.loader-content {
+    position: relative;
+    width: 100%;
+}

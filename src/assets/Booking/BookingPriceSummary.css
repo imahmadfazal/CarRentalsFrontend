@@ -1,0 +1,92 @@
+/* ==========================================================================
+   BookingPriceSummary.css
+   ========================================================================== */
+
+.booking-price-summary {
+    width: 100%;
+    border-radius: 24px;
+    padding: 30px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 60px var(--color-shadow);
+}
+
+.booking-price-summary__title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    margin-bottom: 20px;
+}
+
+.booking-price-summary__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.booking-price-summary__row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    color: var(--color-text-secondary);
+}
+
+.booking-price-summary__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 26px;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    color: var(--color-text);
+}
+
+.booking-price-summary__cta {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: var(--pill-radius);
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-text);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.02em;
+    transition: background-color 0.35s var(--ease-premium),
+        color 0.35s var(--ease-premium),
+        transform 0.25s var(--ease-premium),
+        box-shadow 0.35s var(--ease-premium);
+    margin-bottom: 16px;
+}
+
+.booking-price-summary__cta:hover:not(:disabled) {
+    background-color: transparent;
+    color: var(--color-accent);
+    transform: scale(1.015);
+    box-shadow: 0 12px 35px var(--color-glow);
+}
+
+.booking-price-summary__cta:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.booking-price-summary__note {
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    opacity: 0.65;
+    text-align: center;
+}

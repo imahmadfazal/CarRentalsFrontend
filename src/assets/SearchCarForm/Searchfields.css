@@ -1,0 +1,135 @@
+/* ==========================================================================
+   searchFields.css
+   Two-row input/select grid + the optional filters row beneath it.
+   ========================================================================== */
+
+.search-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.search-fields__row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+/* Stagger each field's fade-up as the section enters, per spec.
+   nth-child covers both rows independently since each row is its own
+   grid container with up to 5 children. */
+.search-fields__row>* {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: search-field-fade-up 0.6s var(--ease-premium) forwards;
+}
+
+.search-fields__row>*:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.search-fields__row>*:nth-child(2) {
+    animation-delay: 0.21s;
+}
+
+.search-fields__row>*:nth-child(3) {
+    animation-delay: 0.27s;
+}
+
+.search-fields__row>*:nth-child(4) {
+    animation-delay: 0.33s;
+}
+
+.search-fields__row>*:nth-child(5) {
+    animation-delay: 0.39s;
+}
+
+@keyframes search-field-fade-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .search-fields__row>* {
+        animation: none;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* The search button sits in row 2's last grid cell and should match
+   the height of the select control beside it, stretching to fill the
+   cell rather than sitting at intrinsic button height. */
+.search-fields__button-cell {
+    display: flex;
+    align-items: stretch;
+    /* Push down to align with select controls (which sit below a label),
+     not the label row itself. */
+    margin-top: 24px;
+}
+
+/* ---- Optional filters row ---- */
+.search-fields__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 28px;
+    padding-top: 22px;
+    margin-top: 4px;
+    border-top: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   Responsive breakpoints
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .search-fields__row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .search-fields__button-cell {
+        grid-column: span 3;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 992px) {
+    .search-fields__row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-fields__button-cell {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-fields {
+        gap: 18px;
+    }
+
+    .search-fields__filters {
+        gap: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-fields__row {
+        grid-template-columns: 1fr;
+    }
+
+    .search-fields__button-cell {
+        grid-column: span 1;
+        margin-top: 6px;
+    }
+
+    .search-fields__filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}

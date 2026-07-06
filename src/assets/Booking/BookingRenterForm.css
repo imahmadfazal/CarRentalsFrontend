@@ -1,0 +1,34 @@
+/* ==========================================================================
+   BookingRenterForm.css
+   ========================================================================== */
+
+.booking-renter-form {
+    margin-bottom: 32px;
+}
+
+.booking-renter-form__title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    margin-bottom: 16px;
+}
+
+.booking-renter-form__row {
+    margin-bottom: 16px;
+}
+
+.booking-renter-form__row--split {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 560px) {
+    .booking-renter-form__row--split {
+        grid-template-columns: 1fr;
+    }
+}

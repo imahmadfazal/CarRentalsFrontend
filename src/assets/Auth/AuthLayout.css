@@ -1,0 +1,120 @@
+/* ==========================================================================
+   AuthLayout.css
+   ========================================================================== */
+
+.auth-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+.auth-page__center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: calc(var(--navbar-height) + var(--navbar-gap) + 40px) 24px 60px;
+}
+
+/* Soft decorative glow behind the card */
+.auth-page__center::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 640px;
+    height: 640px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--color-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.auth-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 460px;
+    border-radius: 28px;
+    padding: 44px 40px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 70px var(--color-shadow);
+}
+
+/* ---- Header ---- */
+.auth-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-header__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+    opacity: 0.75;
+}
+
+.auth-header__title {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    margin-bottom: 12px;
+}
+
+.auth-header__subtext {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    opacity: 0.85;
+}
+
+/* ---- Footer (cross-link between sign in / sign up) ---- */
+.auth-card__footer {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+}
+
+.auth-card__footer a {
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.25s var(--ease-premium);
+}
+
+.auth-card__footer a:hover {
+    opacity: 0.75;
+}
+
+@media (max-width: 560px) {
+    .auth-card {
+        padding: 32px 24px;
+        border-radius: 22px;
+    }
+
+    .auth-header__title {
+        font-size: 2.1rem;
+    }
+}

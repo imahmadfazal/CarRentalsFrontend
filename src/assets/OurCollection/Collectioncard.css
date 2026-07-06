@@ -1,0 +1,364 @@
+/* ==========================================================================
+   collectionCard.css
+   Single luxury fleet card.
+
+   Card is a fixed 340 x 520 box on desktop (per spec): the image fills
+   the top 70% (≈364px) and the content block fills the bottom 30%
+   (≈156px). Body padding, type sizes, and line-clamps below are tuned
+   tightly to that ~122px usable budget (name + 1-line description +
+   specs row + price/CTA footer). `overflow: hidden` on the body is a
+   safety net, not the primary fit strategy — if you lengthen
+   descriptions or add a 4th spec, re-check against --card-height
+   below rather than relying on the clip.
+   ========================================================================== */
+
+.collection-card {
+    --card-width: 340px;
+    --card-height: 520px;
+    --image-height: 70%;
+
+    position: relative;
+    width: 100%;
+    max-width: var(--card-width);
+    height: var(--card-height);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 50px var(--color-shadow);
+
+    /* Page/scroll-triggered fade-up. transitionDelay is set inline by
+     CollectionCard.jsx for the stagger effect. */
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.7s var(--ease-premium),
+        transform 0.7s var(--ease-premium),
+        box-shadow 0.4s var(--ease-premium),
+        border-color 0.4s var(--ease-premium);
+}
+
+.collection-card--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover: whole card lifts, border + shadow brighten/strengthen */
+.collection-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-border-active);
+    box-shadow: 0 30px 70px var(--color-shadow-strong);
+}
+
+/* ---- Image ---- */
+.collection-card__image-wrap {
+    position: relative;
+    width: 100%;
+    height: var(--image-height);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Empty placeholder standing in for the car photo — same box, same
+   hover-zoom transform as the eventual <img> will use, so dropping in
+   a real <img className="collection-card__image" src={...} /> later
+   needs no CSS changes beyond removing this rule. A faint diagonal
+   gradient + subtle border keeps the empty area readable as "image
+   goes here" rather than looking like a rendering bug. */
+.collection-card__image-placeholder,
+.collection-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 1.2s var(--ease-premium);
+}
+
+.collection-card__image-placeholder {
+    background: linear-gradient(135deg,
+            var(--color-surface) 0%,
+            transparent 100%);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.collection-card:hover .collection-card__image-placeholder,
+.collection-card:hover .collection-card__image {
+    transform: scale(1.08);
+}
+
+/* Subtle gradient so the badge/favorite button stay legible over any
+   photo, and the image edge blends into the card body below. */
+.collection-card__image-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            var(--color-overlay-start) 0%,
+            transparent 30%,
+            var(--color-overlay-end) 100%);
+    pointer-events: none;
+}
+
+/* ---- Floating badge (top-left) ---- */
+.collection-card__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-active);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    transition: background 0.3s var(--ease-premium);
+}
+
+.collection-card:hover .collection-card__badge {
+    background: var(--color-surface-hover);
+}
+
+/* ---- Actions Group (top-right) ---- */
+.collection-card__overlay-actions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.collection-card__favorite,
+.collection-card__compare {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-active);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--color-text);
+    transition: background 0.3s var(--ease-premium),
+        transform 0.3s var(--ease-premium),
+        border-color 0.3s var(--ease-premium),
+        color 0.3s var(--ease-premium);
+}
+
+.collection-card__favorite svg,
+.collection-card__compare svg {
+    width: 18px;
+    height: 18px;
+}
+
+.collection-card__favorite:hover,
+.collection-card__compare:hover {
+    background: var(--color-surface-hover);
+    transform: scale(1.08);
+}
+
+.collection-card__compare--active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-text);
+}
+
+.collection-card__compare--active:hover {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+}
+
+.collection-card__favorite--active {
+    background: var(--color-favorite-bg);
+    border-color: var(--color-favorite-border);
+    color: var(--color-favorite);
+}
+
+.collection-card__favorite--active:hover {
+    background: var(--color-favorite-bg-hover);
+    border-color: var(--color-favorite-border-hover);
+    color: var(--color-favorite-hover);
+}
+
+/* ---- Body / content ---- */
+.collection-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px 18px;
+    min-height: 0;
+    /* allow children to shrink instead of overflowing */
+    overflow: hidden;
+    /* safety net: clip cleanly within the card's rounded
+                        corners if real font metrics run slightly over the
+                        hand-tuned budget, rather than spilling past the edge */
+}
+
+.collection-card__name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    line-height: 1.05;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.collection-card__description {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+
+    /* Clamp to 1 line so varying description lengths never push the
+     footer (price + CTA) out of the fixed-height card. Keep
+     descriptions in collectionsData.js short (under ~55 characters)
+     so nothing gets cut off mid-word. */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---- Specs row ---- */
+.collection-card__specs {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    list-style: none;
+    margin-bottom: auto;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.collection-card__spec {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.collection-card__spec-icon {
+    display: inline-flex;
+    color: var(--color-text);
+    opacity: 0.85;
+}
+
+.collection-card__spec-icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ---- Footer: price + CTA ---- */
+.collection-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-border);
+}
+
+.collection-card__price {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.collection-card__price-label {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.collection-card__price-value {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-text);
+    letter-spacing: 0.01em;
+}
+
+.collection-card__price-unit {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-left: 2px;
+}
+
+.collection-card__quantity {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--color-success);
+    margin-top: 4px;
+}
+
+.collection-card__quantity--booked {
+    color: var(--color-error);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.collection-card__cta {
+    flex-shrink: 0;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-text);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.3s var(--ease-premium),
+        color 0.3s var(--ease-premium),
+        transform 0.3s var(--ease-premium);
+}
+
+.collection-card__cta:hover {
+    background-color: transparent;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: scale(1.04);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    .collection-card {
+        --card-height: 500px;
+        max-width: 100%;
+    }
+
+    .collection-card__name {
+        font-size: 1.3rem;
+    }
+
+    .collection-card__cta {
+        padding: 10px 16px;
+        font-size: 0.78rem;
+    }
+}

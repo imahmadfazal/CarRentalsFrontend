@@ -1,0 +1,223 @@
+/* ==========================================================================
+   harborClub.css
+   ========================================================================== */
+
+.harbor-club {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background-color: var(--color-bg-secondary);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 100px 0;
+}
+
+/* Parallax Background setting */
+.harbor-club__parallax-bg {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    width: 100%;
+    height: 160%;
+    background-image: url("https://images.unsplash.com/photo-1503376712351-1f2ddf64ea37?auto=format&fit=crop&w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    z-index: 1;
+    transform: translateY(0);
+}
+
+.harbor-club__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--color-overlay-end) 0%, var(--color-overlay-start) 50%, var(--color-overlay-end) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Wrapper alignment */
+.harbor-club__content-wrapper {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.harbor-club__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.harbor-club__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-scrim-text);
+    margin-bottom: 14px;
+    opacity: 0.8;
+}
+
+.harbor-club__title {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: var(--color-scrim-text);
+    margin: 0 0 20px 0;
+}
+
+.harbor-club__subtext {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-scrim-text);
+    opacity: 0.85;
+    margin-bottom: 36px;
+}
+
+/* Membership CTA Button */
+.harbor-club__cta-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-text);
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s var(--ease-premium),
+        color 0.3s var(--ease-premium);
+}
+
+.harbor-club__cta-btn:hover {
+    background: transparent;
+    color: var(--color-scrim-text);
+}
+
+/* Benefits Grid columns */
+.harbor-club__right {
+    width: 100%;
+}
+
+.harbor-club__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.club-benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--color-scrim-chip-bg);
+    border: 1px solid var(--color-scrim-chip-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0; /* Animated by GSAP */
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.club-benefit-item:hover {
+    background: var(--color-scrim);
+    border-color: var(--color-scrim-chip-border);
+}
+
+.club-benefit-item__icon-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--color-scrim-chip-bg);
+    border: 1px solid var(--color-scrim-chip-border);
+    color: var(--color-scrim-text);
+    flex-shrink: 0;
+}
+
+.club-benefit-item__icon-wrap svg {
+    width: 18px;
+    height: 18px;
+}
+
+.club-benefit-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.club-benefit-item__title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-scrim-text);
+    margin: 0;
+}
+
+.club-benefit-item__desc {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--color-scrim-text);
+    opacity: 0.75;
+    margin: 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 992px) {
+    .harbor-club__title {
+        font-size: 38px;
+    }
+
+    .harbor-club__content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .harbor-club {
+        padding: 72px 0;
+    }
+
+    .harbor-club__overlay {
+        background: linear-gradient(180deg, var(--color-overlay-end) 0%, var(--color-overlay-start) 60%, var(--color-overlay-end) 100%);
+    }
+
+    .harbor-club__title {
+        font-size: 32px;
+    }
+
+    .harbor-club__subtext {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .club-benefit-item {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .harbor-club__title {
+        font-size: 28px;
+    }
+
+    .club-benefit-item {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

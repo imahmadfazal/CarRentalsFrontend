@@ -1,0 +1,138 @@
+/* ==========================================================================
+   AdminCarForm.css
+   ========================================================================== */
+
+.admin-car-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    max-width: 620px;
+    padding: 32px;
+    border-radius: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+
+.admin-car-form__title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.admin-car-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.admin-car-form__hint {
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin-top: -12px;
+}
+
+.admin-car-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-car-form__label {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.admin-car-form__textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.3s var(--ease-premium), background 0.3s var(--ease-premium);
+}
+
+.admin-car-form__textarea:focus {
+    outline: none;
+    border-color: var(--color-border-active);
+    background: var(--color-surface);
+}
+
+.admin-car-form__dropzone {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    border-radius: 16px;
+    background: var(--color-input-bg);
+    border: 2px dashed var(--color-border);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s var(--ease-premium);
+}
+
+.admin-car-form__dropzone:hover {
+    border-color: var(--color-border-active);
+}
+
+.admin-car-form__dropzone--error {
+    border-color: var(--color-error-border);
+}
+
+.admin-car-form__file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.admin-car-form__preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-car-form__dropzone-text {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+}
+
+.admin-car-form__error {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--color-error);
+    margin: 0;
+}
+
+.admin-car-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+@media (max-width: 560px) {
+    .admin-car-form {
+        padding: 22px;
+    }
+
+    .admin-car-form__row {
+        grid-template-columns: 1fr;
+    }
+}

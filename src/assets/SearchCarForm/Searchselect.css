@@ -1,0 +1,116 @@
+/* ==========================================================================
+   searchSelect.css
+   Same visual family as searchInput.css — kept in its own file per
+   the requested structure, with a custom dropdown arrow since native
+   <select> arrows render inconsistently against a dark glass field.
+   ========================================================================== */
+
+.search-select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-select__label {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.search-select__required {
+    color: var(--color-accent);
+    margin-left: 3px;
+}
+
+.search-select__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.3s var(--ease-premium),
+        box-shadow 0.3s var(--ease-premium),
+        background 0.3s var(--ease-premium);
+}
+
+.search-select__field:hover {
+    border-color: var(--color-border-active);
+}
+
+.search-select__field:focus-within {
+    border-color: var(--color-border-active);
+    box-shadow: 0 0 0 3px var(--color-surface);
+    background: var(--color-surface);
+}
+
+.search-select__field--error {
+    border-color: var(--color-error-border);
+}
+
+.search-select__icon {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.search-select__control {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Reserve space on the right for the custom arrow below. */
+    padding-right: 22px;
+    cursor: pointer;
+}
+
+/* Style the dropdown's own option list where supported (Chromium).
+   Firefox/Safari fall back to native OS styling for the open list,
+   which is an acceptable, non-broken degradation. */
+.search-select__control option {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+}
+
+/* Custom chevron, since native select arrows can't be recolored
+   directly and default browser chevrons look out of place here. */
+.search-select__field::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid var(--color-text-secondary);
+    border-bottom: 1.5px solid var(--color-text-secondary);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+    transition: border-color 0.3s var(--ease-premium);
+}
+
+.search-select__field:focus-within::after {
+    border-color: var(--color-text);
+}
+
+.search-select__error {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    color: var(--color-error);
+    margin-top: -2px;
+}

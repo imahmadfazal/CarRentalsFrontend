@@ -1,0 +1,35 @@
+/* ==========================================================================
+   BookingStatusBadge.css
+   ========================================================================== */
+
+.booking-status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: var(--pill-radius);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.booking-status-badge--pending {
+    background: var(--color-surface);
+    border-color: var(--color-border-active);
+    color: var(--color-text-secondary);
+}
+
+.booking-status-badge--confirmed {
+    background: var(--color-success-bg);
+    border-color: var(--color-success-border);
+    color: var(--color-success);
+}
+
+.booking-status-badge--cancelled {
+    background: rgba(255, 99, 99, 0.12);
+    border-color: var(--color-error-border);
+    color: var(--color-error);
+}

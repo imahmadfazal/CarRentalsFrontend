@@ -1,0 +1,51 @@
+/* ==========================================================================
+   AuthForm.css
+   Shared layout rules for SignInForm and SignUpForm.
+   ========================================================================== */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-form__row--split {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.auth-form__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: -6px;
+}
+
+.auth-form__link-btn {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.25s var(--ease-premium);
+}
+
+.auth-form__link-btn:hover {
+    color: var(--color-text);
+}
+
+.auth-form__error {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--color-error);
+    text-align: center;
+}
+
+@media (max-width: 560px) {
+    .auth-form__row--split {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,55 @@
+/* ==========================================================================
+   BookingConfirmationPage.css
+   ========================================================================== */
+
+.booking-confirmation-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+.booking-confirmation-page__content {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: calc(var(--navbar-height) + var(--navbar-gap) + 48px) 0 100px;
+}
+
+.booking-confirmation-page__layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.booking-confirmation-page__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: calc(var(--navbar-height) + var(--navbar-gap) + 100px) 24px 140px;
+    font-family: var(--font-body);
+}
+
+.booking-confirmation-page__empty h1 {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--color-text);
+    margin-bottom: 16px;
+}
+
+.booking-confirmation-page__empty p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+    .booking-confirmation-page__layout {
+        grid-template-columns: 1fr;
+    }
+}

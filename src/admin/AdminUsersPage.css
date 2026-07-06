@@ -1,0 +1,31 @@
+/* ==========================================================================
+   AdminUsersPage.css
+   ========================================================================== */
+
+.admin-users__search {
+    width: 280px;
+    padding: 12px 16px;
+    border-radius: var(--pill-radius);
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    transition: border-color 0.3s var(--ease-premium), background 0.3s var(--ease-premium);
+}
+
+.admin-users__search::placeholder {
+    color: var(--color-text-muted);
+}
+
+.admin-users__search:focus {
+    outline: none;
+    border-color: var(--color-border-active);
+    background: var(--color-surface);
+}
+
+@media (max-width: 600px) {
+    .admin-users__search {
+        width: 100%;
+    }
+}

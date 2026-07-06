@@ -1,0 +1,74 @@
+/* ==========================================================================
+   NavbarAuth.css
+   ========================================================================== */
+
+.navbar-auth--desktop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-auth__signin--desktop {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    padding: 6px 2px;
+    white-space: nowrap;
+    transition: color var(--duration-fast) var(--ease-premium);
+}
+
+.navbar-auth__signin--desktop:hover {
+    color: var(--color-text);
+}
+
+.navbar-auth__name {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.navbar-auth__logout {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+    transition: color var(--duration-fast) var(--ease-premium);
+}
+
+.navbar-auth__logout:hover {
+    color: var(--color-text);
+}
+
+/* ---- Mobile variant (inside the dropdown panel) ---- */
+.navbar-auth--mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 8px 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--color-surface);
+}
+
+.navbar-auth__signin--mobile {
+    display: block;
+    margin: 0 8px 8px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: background-color var(--duration-fast) var(--ease-premium),
+        color var(--duration-fast) var(--ease-premium);
+}
+
+.navbar-auth__signin--mobile:hover {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text);
+}

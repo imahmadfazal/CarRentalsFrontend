@@ -1,0 +1,69 @@
+/* ==========================================================================
+   CustomCursor.css
+   VIP trail cursor styling with lag settings and glass highlights.
+   ========================================================================== */
+
+/* Hides browser default pointer only on desktop body */
+body.hide-default-cursor {
+    cursor: none !important;
+}
+
+body.hide-default-cursor a,
+body.hide-default-cursor button,
+body.hide-default-cursor select,
+body.hide-default-cursor input,
+body.hide-default-cursor textarea,
+body.hide-default-cursor [role="button"],
+body.hide-default-cursor .collection-card,
+body.hide-default-cursor .service-tab-card {
+    cursor: none !important;
+}
+
+/* Inner Solid Dot */
+.custom-cursor__dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-text);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Outer Hollow Ring */
+.custom-cursor__ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2.5px solid var(--color-border-active);
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 99998;
+    will-change: transform;
+    opacity: 0;
+    transition: transform 0.25s var(--ease-premium), 
+                background-color 0.25s var(--ease-premium), 
+                border-color 0.25s var(--ease-premium),
+                opacity 0.25s var(--ease-premium);
+}
+
+/* Hover States */
+.custom-cursor__dot--hover {
+    transform: scale(0.6);
+    background-color: var(--color-border-active);
+}
+
+.custom-cursor__ring--hover {
+    transform: scale(1.6);
+    background-color: var(--color-surface);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px var(--color-glow);
+}

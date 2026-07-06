@@ -1,0 +1,561 @@
+/* ==========================================================================
+   collections.css
+   "Our Collections" fleet section.
+
+   Reuses the shared design tokens already defined in styles/home.css
+   (--color-bg, --font-display, --ease-premium, etc.) so this section
+   stays visually unified with the Hero. home.css must be loaded once
+   somewhere in the app (it already is, since Hero/Navbar depend on it)
+   — this file does not redeclare :root.
+   ========================================================================== */
+
+.collections {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-bg);
+    margin-top: 120px;
+    padding: 100px 0;
+}
+
+/* ---- Header ---- */
+.collections__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 72px;
+    padding: 0 24px;
+}
+
+.collections__eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 14px;
+}
+
+.collections__heading {
+    font-family: var(--font-display);
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.collections__subtext {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+}
+
+/* ---- Grid ---- */
+.collections__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 32px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Each grid item is a thin wrapper around an unmodified CollectionCard.
+   It owns the category-switch slide animation so CollectionCard's own
+   markup/CSS never has to know about category filtering at all.
+
+   --exit-duration / --enter-duration are set inline by Collections.jsx
+   from the same EXIT_DURATION / ENTER_DURATION constants used for the
+   JS phase timers, so the CSS animation and the timeout that swaps
+   data can never drift out of sync. */
+.collections__grid-item {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Phase: "leaving" — current cards (still showing the outgoing
+   category) slide left and fade out, one-by-one (staggered delay is set
+   inline by Collections.jsx). */
+.collections__grid--leaving .collections__grid-item {
+    animation: collections-card-leave var(--exit-duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Phase: "entering" — newly swapped-in cards start off-screen left
+   and animate to their resting position. A keyframe `animation` is
+   used here so each card has its own independent stagger via animationDelay.
+   Using `both` fill-mode ensures cards stay invisible during their delay. */
+.collections__grid--entering .collections__grid-item {
+    animation: collections-card-enter var(--enter-duration) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes collections-card-leave {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(60px);
+        opacity: 0;
+    }
+}
+
+@keyframes collections-card-enter {
+    from {
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .collections__grid--leaving .collections__grid-item,
+    .collections__grid--entering .collections__grid-item {
+        transition: none;
+        animation: none;
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   Responsive breakpoints
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .collections__grid {
+        max-width: 980px;
+        gap: 24px;
+    }
+
+    .collections__heading {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 992px) {
+    .collections {
+        margin-top: 80px;
+        padding: 80px 0;
+    }
+
+    .collections__grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 720px;
+    }
+
+    .collections__heading {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 768px) {
+    .collections {
+        margin-top: 56px;
+        padding: 64px 0;
+    }
+
+    .collections__header {
+        margin-bottom: 48px;
+    }
+
+    .collections__heading {
+        font-size: 36px;
+    }
+
+    .collections__subtext {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collections__grid {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        gap: 28px;
+        padding: 0 20px;
+    }
+
+    .collections__heading {
+        font-size: 30px;
+    }
+
+    .collections__eyebrow {
+        font-size: 0.72rem;
+    }
+}
+
+/* ---- Search & Sort Controls Bar ---- */
+.collections__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 1100px;
+    margin: -20px auto 48px;
+    padding: 0 24px;
+}
+
+.collections__search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 320px;
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    transition: border-color var(--duration-fast) var(--ease-premium),
+        box-shadow var(--duration-fast) var(--ease-premium);
+}
+
+.collections__search-wrapper:focus-within {
+    border-color: var(--color-border-active);
+    box-shadow: 0 0 15px var(--color-glow);
+}
+
+.collections__search-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+    margin-right: 10px;
+    opacity: 0.6;
+}
+
+.collections__search-input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    width: 100%;
+}
+
+.collections__search-input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.45;
+}
+
+.collections__search-clear {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.collections__sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.collections__sort-label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+.collections__sort-select {
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 20px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color var(--duration-fast) var(--ease-premium);
+}
+
+.collections__sort-select:focus {
+    border-color: var(--color-border-active);
+}
+
+.collections__no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 0;
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+/* ---- Floating Comparison Drawer ---- */
+.collections__compare-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    background: var(--color-overlay-end);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -20px 60px var(--color-shadow-strong);
+    transform: translateY(100%);
+    transition: transform 0.5s var(--ease-premium);
+}
+
+.collections__compare-drawer--open {
+    transform: translateY(0);
+}
+
+.compare-drawer__inner {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0 32px;
+}
+
+.compare-drawer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.compare-drawer__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-right: 12px;
+}
+
+.compare-drawer__count {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+}
+
+.compare-drawer__header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.compare-drawer__clear-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color var(--duration-fast);
+}
+
+.compare-drawer__clear-btn:hover {
+    color: var(--color-text);
+}
+
+.compare-drawer__close-btn {
+    background: var(--color-input-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.compare-drawer__close-btn:hover {
+    background: var(--color-surface-hover);
+    transform: scale(1.05);
+}
+
+.compare-drawer__close-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ---- Compare Table ---- */
+.compare-drawer__table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.compare-table th, 
+.compare-table td {
+    padding: 12px 18px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.compare-table__label-col {
+    width: 220px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.74rem;
+}
+
+.compare-table__car-col {
+    width: 300px;
+}
+
+.compare-table__label {
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+}
+
+.compare-car-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.compare-car-card__remove {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--color-overlay-start);
+    border: none;
+    color: var(--color-text-secondary);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.95rem;
+    line-height: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.compare-car-card__remove:hover {
+    background: var(--color-danger);
+    color: var(--color-danger-text);
+}
+
+.compare-car-card__img-wrap {
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.compare-car-card__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.compare-car-card__name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+}
+
+.compare-car-card__price {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.compare-car-card--empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 162px;
+    border: 2px dashed var(--color-border);
+    border-radius: 16px;
+    color: var(--color-text-secondary);
+    opacity: 0.4;
+}
+
+.compare-car-card__plus {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.compare-car-card__add-text {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.compare-table__empty-cell {
+    opacity: 0.3;
+}
+
+.compare-table__book-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent-text);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.compare-table__book-btn:hover {
+    background: transparent;
+    color: var(--color-accent);
+}
+
+/* Responsive adjust for compare controls */
+@media (max-width: 768px) {
+    .collections__controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        margin-bottom: 36px;
+    }
+
+    .collections__search-wrapper {
+        max-width: 100%;
+    }
+}

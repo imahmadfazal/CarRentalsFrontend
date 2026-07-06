@@ -1,0 +1,154 @@
+/* ==========================================================================
+   BookingIdUpload.css
+   ========================================================================== */
+
+.booking-id-upload {
+    margin-bottom: 4px;
+}
+
+.booking-id-upload__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    margin-bottom: 6px;
+}
+
+.booking-id-upload__desc {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    opacity: 0.65;
+    margin-bottom: 10px;
+}
+
+.booking-id-upload__dropzone {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    border-radius: 18px;
+    background: var(--color-surface);
+    border: 2px dashed var(--color-border);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.3s var(--ease-premium),
+        background 0.3s var(--ease-premium);
+}
+
+.booking-id-upload__dropzone:hover,
+.booking-id-upload__dropzone:focus-visible {
+    border-color: var(--color-border-active);
+    background: var(--color-input-bg);
+}
+
+.booking-id-upload__dropzone:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.booking-id-upload__dropzone--dragging {
+    border-color: var(--color-border-active);
+    background: var(--color-surface-hover);
+}
+
+.booking-id-upload__dropzone--error {
+    border-color: var(--color-error-border);
+}
+
+.booking-id-upload__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.booking-id-upload__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+}
+
+.booking-id-upload__icon {
+    width: 28px;
+    height: 28px;
+    opacity: 0.5;
+}
+
+.booking-id-upload__placeholder-text {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    opacity: 0.6;
+}
+
+.booking-id-upload__preview {
+    position: absolute;
+    inset: 0;
+}
+
+.booking-id-upload__preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.booking-id-upload__remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-scrim);
+    border: 1px solid var(--color-border-active);
+    color: var(--color-scrim-text);
+    font-size: 1rem;
+    line-height: 1;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.25s var(--ease-premium),
+        transform 0.2s var(--ease-premium);
+}
+
+.booking-id-upload__remove:hover {
+    background: var(--color-scrim-strong);
+    transform: scale(1.08);
+}
+
+.booking-id-upload__replace-hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 14px;
+    background: linear-gradient(0deg, var(--color-scrim) 0%, transparent 100%);
+    color: var(--color-scrim-text);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.25s var(--ease-premium);
+}
+
+.booking-id-upload__dropzone:hover .booking-id-upload__replace-hint {
+    opacity: 1;
+}
+
+.booking-id-upload__error {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    color: var(--color-error);
+    margin-top: 8px;
+}

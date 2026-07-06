@@ -1,0 +1,113 @@
+/* ==========================================================================
+   BookingPage.css
+   ========================================================================== */
+
+.booking-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+.booking-page__toolbar {
+    position: fixed;
+    top: calc(var(--navbar-gap) + (var(--navbar-height) - 44px) / 2);
+    left: 40px;
+    z-index: 1001;
+    width: auto;
+}
+
+@media (min-width: 1400px) {
+    .booking-page__toolbar {
+        left: calc(50% - 550px - 160px);
+    }
+}
+
+@media (max-width: 992px) {
+    .booking-page__toolbar {
+        left: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-page__toolbar {
+        top: calc(16px + (64px - 44px) / 2);
+        left: 16px;
+    }
+}
+
+.booking-page__content {
+    width: 90%;
+    max-width: 1100px;
+    margin: calc(var(--navbar-height) + var(--navbar-gap) + 40px) auto 100px;
+}
+
+.booking-page__eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
+
+.booking-page__heading {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--color-text);
+    margin-bottom: 32px;
+}
+
+.booking-page__layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.booking-page__summary {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--navbar-gap) + 24px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.booking-page__submit-error {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-error);
+    text-align: center;
+    margin: -8px 0 0;
+}
+
+.booking-page__not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: calc(var(--navbar-height) + var(--navbar-gap) + 60px) 32px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+}
+
+@media (max-width: 900px) {
+    .booking-page__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-page__summary {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .booking-page__heading {
+        font-size: 2.4rem;
+    }
+}

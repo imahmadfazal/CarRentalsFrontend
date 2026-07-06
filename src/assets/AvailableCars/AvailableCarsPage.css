@@ -1,0 +1,24 @@
+/* ==========================================================================
+   AvailableCarsPage.css
+   ========================================================================== */
+
+.available-cars-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+.available-cars-page__content {
+    width: 90%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: calc(var(--navbar-height) + var(--navbar-gap) + 40px) 0 100px;
+}
+
+@media (max-width: 768px) {
+    .available-cars-page__content {
+        padding-top: calc(var(--navbar-height) + var(--navbar-gap) + 28px);
+    }
+}

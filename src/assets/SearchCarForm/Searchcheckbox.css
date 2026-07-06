@@ -1,0 +1,73 @@
+/* ==========================================================================
+   searchCheckbox.css
+   Glass checkbox. The native <input> stays in the DOM (for real
+   keyboard/screen-reader support) but is visually hidden; the styled
+   box + check icon are siblings driven by :checked.
+   ========================================================================== */
+
+.search-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.search-checkbox__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-checkbox__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: background 0.25s var(--ease-premium),
+        border-color 0.25s var(--ease-premium);
+}
+
+.search-checkbox__check {
+    width: 12px;
+    height: 12px;
+    color: var(--color-accent-text);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.2s var(--ease-premium),
+        transform 0.2s var(--ease-premium);
+}
+
+.search-checkbox__input:checked+.search-checkbox__box {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.search-checkbox__input:checked+.search-checkbox__box .search-checkbox__check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Visible focus ring for keyboard users tabbing onto the hidden input. */
+.search-checkbox__input:focus-visible+.search-checkbox__box {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.search-checkbox:hover .search-checkbox__box {
+    border-color: var(--color-border-active);
+}
+
+.search-checkbox__label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text);
+    white-space: nowrap;
+}

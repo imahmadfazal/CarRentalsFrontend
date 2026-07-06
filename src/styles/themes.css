@@ -1,0 +1,185 @@
+/* ==========================================================================
+   themes.css
+   Single source of truth for every color used across RideHarbor.
+   Loaded first (see main.jsx), before any component CSS, so every other
+   stylesheet can rely on these custom properties already existing.
+
+   Switching theme = setting data-theme="light" | "teal" on <html>
+   (see src/context/ThemeContext.jsx). No data-theme attribute (or any
+   other value) falls back to the dark theme defined on :root.
+
+   Non-color tokens (--font-*, --navbar-*, --ease-premium, --duration-*,
+   --container-radius, --pill-radius) intentionally stay in Home.css —
+   they are not theme-specific.
+   ========================================================================== */
+
+:root {
+    /* ---- Core surfaces & text ---- */
+    --color-bg: #090909;
+    --color-bg-secondary: #111111;
+    --color-surface: rgba(255, 255, 255, 0.08);
+    --color-surface-hover: rgba(255, 255, 255, 0.12);
+    --color-border: rgba(255, 255, 255, 0.14);
+    --color-border-active: rgba(255, 255, 255, 0.6);
+    --color-text: #ffffff;
+    --color-text-secondary: #bdbdbd;
+    --color-text-muted: #8a8a8a;
+    --color-accent: #ffffff;
+    --color-accent-text: #090909;
+
+    /* ---- Overlays, glow, shadow ---- */
+    --color-overlay-start: rgba(0, 0, 0, 0.5);
+    --color-overlay-end: rgba(0, 0, 0, 0.7);
+    --color-glow: rgba(255, 255, 255, 0.18);
+    --color-shadow: rgba(0, 0, 0, 0.45);
+    --color-shadow-strong: rgba(0, 0, 0, 0.65);
+
+    /* ---- Inputs, navbar, scrollbar, placeholders ---- */
+    --color-input-bg: rgba(255, 255, 255, 0.05);
+    --color-navbar-bg: rgba(255, 255, 255, 0.06);
+    --color-scrollbar: rgba(255, 255, 255, 0.15);
+    --color-placeholder-bg: linear-gradient(160deg, #2a2a2a 0%, #161616 100%);
+
+    /* ---- Form validation ---- */
+    --color-error: #ff8a8a;
+    --color-error-border: rgba(255, 99, 99, 0.6);
+
+    /* ---- Extended semantic tokens (brand accents not covered above) ---- */
+    --color-success: #4caf50;
+    --color-success-bg: rgba(76, 175, 80, 0.12);
+    --color-success-border: rgba(76, 175, 80, 0.35);
+
+    --color-favorite: #e91e63;
+    --color-favorite-hover: #ff2c74;
+    --color-favorite-bg: rgba(233, 30, 99, 0.18);
+    --color-favorite-bg-hover: rgba(233, 30, 99, 0.28);
+    --color-favorite-border: rgba(233, 30, 99, 0.4);
+    --color-favorite-border-hover: rgba(233, 30, 99, 0.6);
+
+    --color-star: #ffd700;
+    --color-danger: rgba(255, 0, 0, 0.6);
+    --color-danger-text: #ffffff;
+
+    /* Dark scrim for controls/captions overlaid on arbitrary photos
+       (e.g. a remove-image button, a caption gradient on a hero image).
+       Deliberately constant across themes — it needs guaranteed
+       contrast against unpredictable photo content, not a theme tint. */
+    --color-scrim: rgba(9, 9, 9, 0.7);
+    --color-scrim-strong: rgba(9, 9, 9, 0.9);
+    --color-scrim-text: #ffffff;
+    --color-scrim-chip-bg: rgba(255, 255, 255, 0.08);
+    --color-scrim-chip-border: rgba(255, 255, 255, 0.18);
+    --color-scrim-active-bg: #ffffff;
+    --color-scrim-active-text: #090909;
+    --color-scrim-glow: rgba(255, 255, 255, 0.18);
+}
+
+/* ==========================================================================
+   Theme: Light
+   ========================================================================== */
+[data-theme="light"] {
+    --color-bg: #f0f0f0;
+    --color-bg-secondary: #e4e4e4;
+    --color-surface: rgba(0, 0, 0, 0.05);
+    --color-surface-hover: rgba(0, 0, 0, 0.09);
+    --color-border: rgba(0, 0, 0, 0.12);
+    --color-border-active: rgba(0, 0, 0, 0.55);
+    --color-text: #0a0a0a;
+    --color-text-secondary: #444444;
+    --color-text-muted: #777777;
+    --color-accent: #0a0a0a;
+    --color-accent-text: #ffffff;
+
+    --color-overlay-start: rgba(255, 255, 255, 0.4);
+    --color-overlay-end: rgba(0, 0, 0, 0.35);
+    --color-glow: rgba(0, 0, 0, 0.12);
+    --color-shadow: rgba(0, 0, 0, 0.15);
+    --color-shadow-strong: rgba(0, 0, 0, 0.25);
+
+    --color-input-bg: rgba(0, 0, 0, 0.04);
+    --color-navbar-bg: rgba(255, 255, 255, 0.7);
+    --color-scrollbar: rgba(0, 0, 0, 0.2);
+    --color-placeholder-bg: linear-gradient(160deg, #d0d0d0 0%, #e8e8e8 100%);
+
+    --color-error: #cc2222;
+    --color-error-border: rgba(200, 50, 50, 0.5);
+
+    --color-success: #2e7d32;
+    --color-success-bg: rgba(46, 125, 50, 0.1);
+    --color-success-border: rgba(46, 125, 50, 0.3);
+
+    --color-favorite: #d81b60;
+    --color-favorite-hover: #c2185b;
+    --color-favorite-bg: rgba(216, 27, 96, 0.1);
+    --color-favorite-bg-hover: rgba(216, 27, 96, 0.18);
+    --color-favorite-border: rgba(216, 27, 96, 0.35);
+    --color-favorite-border-hover: rgba(216, 27, 96, 0.55);
+
+    --color-star: #c79100;
+    --color-danger: rgba(211, 47, 47, 0.55);
+    --color-danger-text: #ffffff;
+
+    --color-scrim: rgba(9, 9, 9, 0.7);
+    --color-scrim-strong: rgba(9, 9, 9, 0.9);
+    --color-scrim-text: #ffffff;
+    --color-scrim-chip-bg: rgba(255, 255, 255, 0.08);
+    --color-scrim-chip-border: rgba(255, 255, 255, 0.18);
+    --color-scrim-active-bg: #ffffff;
+    --color-scrim-active-text: #090909;
+    --color-scrim-glow: rgba(255, 255, 255, 0.18);
+}
+
+/* ==========================================================================
+   Theme: Teal / Ocean Dark
+   ========================================================================== */
+[data-theme="teal"] {
+    --color-bg: #060d0f;
+    --color-bg-secondary: #0a1a1e;
+    --color-surface: rgba(45, 212, 191, 0.07);
+    --color-surface-hover: rgba(45, 212, 191, 0.13);
+    --color-border: rgba(45, 212, 191, 0.18);
+    --color-border-active: rgba(45, 212, 191, 0.7);
+    --color-text: #e8f5f4;
+    --color-text-secondary: #8ab4b8;
+    --color-text-muted: #4a7a7e;
+    --color-accent: #2dd4bf;
+    --color-accent-text: #060d0f;
+
+    --color-overlay-start: rgba(6, 13, 15, 0.6);
+    --color-overlay-end: rgba(6, 13, 15, 0.8);
+    --color-glow: rgba(45, 212, 191, 0.25);
+    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-shadow-strong: rgba(0, 0, 0, 0.7);
+
+    --color-input-bg: rgba(45, 212, 191, 0.04);
+    --color-navbar-bg: rgba(6, 13, 15, 0.75);
+    --color-scrollbar: rgba(45, 212, 191, 0.2);
+    --color-placeholder-bg: linear-gradient(160deg, #0d2428 0%, #081518 100%);
+
+    --color-error: #ff8a8a;
+    --color-error-border: rgba(255, 99, 99, 0.6);
+
+    --color-success: #4caf50;
+    --color-success-bg: rgba(76, 175, 80, 0.12);
+    --color-success-border: rgba(76, 175, 80, 0.35);
+
+    --color-favorite: #ff4d8d;
+    --color-favorite-hover: #ff6fa3;
+    --color-favorite-bg: rgba(255, 77, 141, 0.15);
+    --color-favorite-bg-hover: rgba(255, 77, 141, 0.25);
+    --color-favorite-border: rgba(255, 77, 141, 0.4);
+    --color-favorite-border-hover: rgba(255, 77, 141, 0.6);
+
+    --color-star: #ffd700;
+    --color-danger: rgba(255, 82, 82, 0.6);
+    --color-danger-text: #ffffff;
+
+    --color-scrim: rgba(9, 9, 9, 0.7);
+    --color-scrim-strong: rgba(9, 9, 9, 0.9);
+    --color-scrim-text: #ffffff;
+    --color-scrim-chip-bg: rgba(255, 255, 255, 0.08);
+    --color-scrim-chip-border: rgba(255, 255, 255, 0.18);
+    --color-scrim-active-bg: #ffffff;
+    --color-scrim-active-text: #090909;
+    --color-scrim-glow: rgba(255, 255, 255, 0.18);
+}

@@ -1,0 +1,146 @@
+/* ==========================================================================
+   themeSwitcher.css
+   Floating glass pill, fixed bottom-right, present on every page.
+   Built entirely from theme tokens (src/styles/themes.css) so the
+   switcher itself reflects whichever theme is currently active.
+   ========================================================================== */
+
+.theme-switcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2000;
+}
+
+/* ---- Trigger pill ---- */
+.theme-switcher__trigger {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 20px;
+    border-radius: var(--pill-radius);
+    background: var(--color-navbar-bg);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 28px var(--color-shadow);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: border-color 0.3s var(--ease-premium),
+        box-shadow 0.3s var(--ease-premium),
+        transform 0.25s var(--ease-premium),
+        background 0.3s var(--ease-premium);
+}
+
+.theme-switcher__trigger:hover,
+.theme-switcher:focus-within .theme-switcher__trigger {
+    border-color: var(--color-border-active);
+    box-shadow: 0 10px 32px var(--color-shadow), 0 0 0 1px var(--color-glow);
+    transform: translateY(-2px);
+}
+
+.theme-switcher__trigger:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.theme-switcher__trigger-icon {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    color: var(--color-accent);
+    transition: transform 0.4s var(--ease-premium), color 0.3s var(--ease-premium);
+}
+
+.theme-switcher__trigger:hover .theme-switcher__trigger-icon {
+    transform: rotate(-18deg);
+}
+
+.theme-switcher__trigger-label {
+    white-space: nowrap;
+}
+
+/* ---- Popup menu ---- */
+.theme-switcher__menu {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 10px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 156px;
+    padding: 8px;
+    border-radius: 18px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 20px 50px var(--color-shadow-strong);
+
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s var(--ease-premium), transform 0.25s var(--ease-premium);
+}
+
+.theme-switcher:hover .theme-switcher__menu,
+.theme-switcher:focus-within .theme-switcher__menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.theme-switcher__option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background 0.25s var(--ease-premium), color 0.25s var(--ease-premium);
+}
+
+.theme-switcher__option:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+.theme-switcher__option-icon {
+    display: flex;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+.theme-switcher__option--active {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+}
+
+.theme-switcher__option--active:hover {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+}
+
+@media (max-width: 480px) {
+    .theme-switcher {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .theme-switcher__trigger-label {
+        display: none;
+    }
+
+    .theme-switcher__trigger {
+        padding: 12px;
+    }
+}

@@ -1,0 +1,39 @@
+/* ==========================================================================
+   BookingDatesPanel.css
+   ========================================================================== */
+
+.booking-dates-panel {
+    margin-bottom: 32px;
+}
+
+.booking-dates-panel__title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.75;
+    margin-bottom: 16px;
+}
+
+.booking-dates-panel__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.booking-dates-panel__duration {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+@media (max-width: 560px) {
+    .booking-dates-panel__row {
+        grid-template-columns: 1fr;
+    }
+}

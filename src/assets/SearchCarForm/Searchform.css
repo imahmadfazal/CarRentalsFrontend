@@ -1,0 +1,135 @@
+/* ==========================================================================
+   searchForm.css
+   Outer search section container.
+
+   Reuses shared tokens already defined in styles/home.css
+   (--color-bg, --font-display, --ease-premium, etc). home.css must be
+   loaded once somewhere in the app — this file does not redeclare
+   :root.
+
+   Layout note: the section now holds two columns — the promotional
+   card (.search-form__promo, ~38%) and the existing form card
+   (.search-form__card, ~62%) — wrapped in .search-form__layout. Every
+   visual property of .search-form__card (radius, padding, background,
+   border, shadow, blur) is unchanged from before; only its `width`
+   changes, since it's now sized by its flex column instead of being
+   the sole centered block in the section.
+   ========================================================================== */
+
+.search-form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    margin-top: 60px;
+}
+
+.search-form__intro {
+    width: 100%;
+    max-width: 1180px;
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.search-form__layout {
+    width: 90%;
+    max-width: 1180px;
+    display: flex;
+    align-items: stretch;
+    /* equal height for both columns, per spec */
+    gap: 28px;
+}
+
+.search-form__promo {
+    flex: 0 0 38%;
+    max-width: 38%;
+    display: flex;
+}
+
+.search-form__card {
+    flex: 1 1 62%;
+    min-width: 0;
+    /* allow the form column to shrink below its content's
+                   natural width instead of overflowing the flex row */
+    border-radius: 28px;
+    padding: 35px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 70px var(--color-shadow);
+
+    /* Fade-up entrance, same family as Hero's page-load animation.
+     Unchanged from before — still plain CSS, no GSAP, per spec
+     ("Do NOT animate the form"). */
+    opacity: 0;
+    transform: translateY(32px);
+    animation: search-form-fade-up 0.9s var(--ease-premium) forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes search-form-fade-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .search-form__card {
+        animation: none;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---- Responsive ----
+   Desktop (default above): both columns, 38/62 split.
+   Tablet: promo column narrows somewhat, form keeps the remaining space.
+   Mobile: promo card hidden entirely, form goes full width — no gap,
+   no leftover empty space, per spec. */
+
+@media (max-width: 992px) {
+    .search-form__promo {
+        flex: 0 0 32%;
+        max-width: 32%;
+    }
+
+    .search-form__card {
+        flex: 1 1 68%;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-form__layout {
+        width: 100%;
+        gap: 0;
+    }
+
+    .search-form__promo {
+        display: none;
+        /* hide promo card entirely on mobile, per spec */
+    }
+
+    .search-form__card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        width: 100%;
+        padding: 26px 20px;
+        border-radius: 22px;
+    }
+
+    .search-form {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-form__card {
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+}

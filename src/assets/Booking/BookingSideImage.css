@@ -1,0 +1,68 @@
+/* ==========================================================================
+   BookingSideImage.css
+   ========================================================================== */
+
+.booking-side-image {
+    position: relative;
+    width: 100%;
+    min-height: 58rem;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 25px 60px var(--color-shadow);
+}
+
+.booking-side-image__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.booking-side-image__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 28px 26px;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            var(--color-scrim) 55%,
+            var(--color-scrim-strong) 100%);
+}
+
+.booking-side-image__eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-scrim-text);
+    opacity: 0.85;
+    margin-bottom: 8px;
+}
+
+.booking-side-image__title {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    line-height: 1.05;
+    color: var(--color-scrim-text);
+    margin-bottom: 8px;
+    text-shadow: 0 4px 18px var(--color-shadow);
+}
+
+.booking-side-image__desc {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--color-scrim-text);
+    opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+    .booking-side-image {
+        min-height: 320px;
+    }
+}
