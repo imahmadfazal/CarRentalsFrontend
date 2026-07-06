@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchHeader from "./SearchHeader";
-import SearchFields from "./SearchFields";
-import SearchFilters from "./SearchFilters";
+import SearchHeader from "./Searchheader";
+import SearchFields from "./Searchfields";
+import SearchFilters from "./Searchfilters";
 import { validateSearchForm } from "./Validation";
 import "./Searchform.css";
 
