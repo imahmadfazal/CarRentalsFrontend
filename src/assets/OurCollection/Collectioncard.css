@@ -14,7 +14,7 @@
 
 .collection-card {
     --card-width: 340px;
-    --card-height: 520px;
+    --card-height: 540px;
     --image-height: 70%;
 
     position: relative;
@@ -215,6 +215,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* Truncate horizontally via ellipsis only — never let the flex
+       parent squeeze this vertically (that's what caused the name to
+       visually overlap the description when the optional quantity
+       line below pushed the fixed-height card's content budget). */
+    flex-shrink: 0;
 }
 
 .collection-card__description {
@@ -231,6 +236,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-shrink: 0;
 }
 
 /* ---- Specs row ---- */
@@ -274,6 +280,7 @@
     gap: 12px;
     padding-top: 10px;
     border-top: 1px solid var(--color-border);
+    flex-shrink: 0;
 }
 
 .collection-card__price {
@@ -349,7 +356,7 @@
 
 @media (max-width: 480px) {
     .collection-card {
-        --card-height: 500px;
+        --card-height: 520px;
         max-width: 100%;
     }
 
