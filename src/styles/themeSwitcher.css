@@ -21,8 +21,8 @@
     border-radius: var(--pill-radius);
     background: var(--color-navbar-bg);
     border: 1px solid var(--color-border);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     box-shadow: 0 8px 28px var(--color-shadow);
     color: var(--color-text);
     font-family: var(--font-body);
@@ -75,8 +75,8 @@
     border-radius: 18px;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     box-shadow: 0 20px 50px var(--color-shadow-strong);
 
     opacity: 0;

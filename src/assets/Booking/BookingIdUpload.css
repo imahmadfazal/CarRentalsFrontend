@@ -116,8 +116,8 @@
     color: var(--color-scrim-text);
     font-size: 1rem;
     line-height: 1;
-    backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     transition: background 0.25s var(--ease-premium),
         transform 0.2s var(--ease-premium);
 }

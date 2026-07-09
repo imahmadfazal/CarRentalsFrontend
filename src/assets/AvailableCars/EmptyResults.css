@@ -21,8 +21,8 @@
     border-radius: 28px;
     background: var(--color-surface);
     border: 2px dashed var(--color-border);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .empty-results__icon-wrap {

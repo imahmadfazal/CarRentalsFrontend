@@ -308,8 +308,8 @@
     width: 100%;
     z-index: 2000;
     background: var(--color-overlay-end);
-    backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
     border-top: 1px solid var(--color-border);
     box-shadow: 0 -20px 60px var(--color-shadow-strong);
     transform: translateY(100%);

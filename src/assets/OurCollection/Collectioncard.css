@@ -111,8 +111,8 @@
     border-radius: 999px;
     background: var(--color-surface);
     border: 1px solid var(--color-border-active);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     font-family: var(--font-body);
     font-size: 0.7rem;
     font-weight: 600;
@@ -147,8 +147,8 @@
     border-radius: 50%;
     background: var(--color-surface);
     border: 1px solid var(--color-border-active);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     color: var(--color-text);
     transition: background 0.3s var(--ease-premium),
         transform 0.3s var(--ease-premium),

@@ -216,8 +216,8 @@
     padding: 60px 20px;
     overflow-y: auto;
     background: var(--color-scrim-strong);
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .admin-modal {

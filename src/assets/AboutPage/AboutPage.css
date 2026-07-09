@@ -142,8 +142,8 @@
     border-radius: 20px;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     opacity: 0; /* Animated by GSAP */
     transition: transform 0.3s var(--ease-premium),
         border-color 0.3s var(--ease-premium);
